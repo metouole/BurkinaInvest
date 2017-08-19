@@ -1,3 +1,6 @@
 %h1 That is the index Page
 - @pics.each do |pic|
 	%h2= link_to pic.title, pic
+
+
+= link_to "Gram It", new_pic_path
