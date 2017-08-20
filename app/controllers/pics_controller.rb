@@ -8,7 +8,7 @@ before_action :find_pic, only: [:show, :edit, :update, :destroy]
 	end
 
 	def new
-		@pic = Pic.new
+		@pic = current_user.pics.build
 	end
 
 	def show	
@@ -16,7 +16,7 @@ before_action :find_pic, only: [:show, :edit, :update, :destroy]
 
 
 	def create
-		@pic = Pic.new(pic_params)
+		@pic = current_user.pics.build(pic_params)
 		if @pic.save
 			redirect_to @pic, notice: "Yesssss! It was posted!"
 		else
@@ -37,7 +37,7 @@ before_action :find_pic, only: [:show, :edit, :update, :destroy]
 
 	def destroy
 		@pic.destroy
-		redirect_to root_path
+		redirect_to root_path, notice: "Deleted Successfully!"
 	end
 
 
